@@ -1,0 +1,60 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2B5BB721-9EBB-4BED-BB6A-0631261D1FBC}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="QuickConsole\ConsoleOut\ConsoleOut.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="QuickConsole\ConsoleMenu\QuickConsoleMenu.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Consoles\ConsoleDemo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ConsoleOut">
+        <MSBuild Projects="QuickConsole\ConsoleOut\ConsoleOut.dproj"/>
+    </Target>
+    <Target Name="ConsoleOut:Clean">
+        <MSBuild Projects="QuickConsole\ConsoleOut\ConsoleOut.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConsoleOut:Make">
+        <MSBuild Projects="QuickConsole\ConsoleOut\ConsoleOut.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="QuickConsoleMenu">
+        <MSBuild Projects="QuickConsole\ConsoleMenu\QuickConsoleMenu.dproj"/>
+    </Target>
+    <Target Name="QuickConsoleMenu:Clean">
+        <MSBuild Projects="QuickConsole\ConsoleMenu\QuickConsoleMenu.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="QuickConsoleMenu:Make">
+        <MSBuild Projects="QuickConsole\ConsoleMenu\QuickConsoleMenu.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ConsoleDemo">
+        <MSBuild Projects="Consoles\ConsoleDemo.dproj"/>
+    </Target>
+    <Target Name="ConsoleDemo:Clean">
+        <MSBuild Projects="Consoles\ConsoleDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConsoleDemo:Make">
+        <MSBuild Projects="Consoles\ConsoleDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ConsoleOut;QuickConsoleMenu;ConsoleDemo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ConsoleOut:Clean;QuickConsoleMenu:Clean;ConsoleDemo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ConsoleOut:Make;QuickConsoleMenu:Make;ConsoleDemo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
