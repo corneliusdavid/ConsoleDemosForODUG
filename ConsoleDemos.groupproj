@@ -3,6 +3,9 @@
         <ProjectGuid>{2B5BB721-9EBB-4BED-BB6A-0631261D1FBC}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="JustWriteln.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="QuickConsole\ConsoleOut\ConsoleOut.dproj">
             <Dependencies/>
         </Projects>
@@ -26,6 +29,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="JustWriteln">
+        <MSBuild Projects="JustWriteln.dproj"/>
+    </Target>
+    <Target Name="JustWriteln:Clean">
+        <MSBuild Projects="JustWriteln.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JustWriteln:Make">
+        <MSBuild Projects="JustWriteln.dproj" Targets="Make"/>
+    </Target>
     <Target Name="ConsoleOut">
         <MSBuild Projects="QuickConsole\ConsoleOut\ConsoleOut.dproj"/>
     </Target>
@@ -72,13 +84,13 @@
         <MSBuild Projects="VSoft\System.Console\VSoftSystemConsoleDemo.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ConsoleOut;QuickConsoleMenu;ConsoleDemo;Testbed;VSoftSystemConsoleDemo"/>
+        <CallTarget Targets="JustWriteln;ConsoleOut;QuickConsoleMenu;ConsoleDemo;Testbed;VSoftSystemConsoleDemo"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ConsoleOut:Clean;QuickConsoleMenu:Clean;ConsoleDemo:Clean;Testbed:Clean;VSoftSystemConsoleDemo:Clean"/>
+        <CallTarget Targets="JustWriteln:Clean;ConsoleOut:Clean;QuickConsoleMenu:Clean;ConsoleDemo:Clean;Testbed:Clean;VSoftSystemConsoleDemo:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ConsoleOut:Make;QuickConsoleMenu:Make;ConsoleDemo:Make;Testbed:Make;VSoftSystemConsoleDemo:Make"/>
+        <CallTarget Targets="JustWriteln:Make;ConsoleOut:Make;QuickConsoleMenu:Make;ConsoleDemo:Make;Testbed:Make;VSoftSystemConsoleDemo:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
