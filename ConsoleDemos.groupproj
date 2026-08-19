@@ -1,4 +1,4 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{2B5BB721-9EBB-4BED-BB6A-0631261D1FBC}</ProjectGuid>
     </PropertyGroup>
@@ -10,6 +10,9 @@
             <Dependencies/>
         </Projects>
         <Projects Include="Consoles\ConsoleDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="tbg_testbed\Testbed.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -47,14 +50,23 @@
     <Target Name="ConsoleDemo:Make">
         <MSBuild Projects="Consoles\ConsoleDemo.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Testbed">
+        <MSBuild Projects="tbg_testbed\Testbed.dproj"/>
+    </Target>
+    <Target Name="Testbed:Clean">
+        <MSBuild Projects="tbg_testbed\Testbed.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Testbed:Make">
+        <MSBuild Projects="tbg_testbed\Testbed.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ConsoleOut;QuickConsoleMenu;ConsoleDemo"/>
+        <CallTarget Targets="ConsoleOut;QuickConsoleMenu;ConsoleDemo;Testbed"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ConsoleOut:Clean;QuickConsoleMenu:Clean;ConsoleDemo:Clean"/>
+        <CallTarget Targets="ConsoleOut:Clean;QuickConsoleMenu:Clean;ConsoleDemo:Clean;Testbed:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ConsoleOut:Make;QuickConsoleMenu:Make;ConsoleDemo:Make"/>
+        <CallTarget Targets="ConsoleOut:Make;QuickConsoleMenu:Make;ConsoleDemo:Make;Testbed:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

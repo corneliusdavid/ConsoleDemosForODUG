@@ -6,3 +6,6 @@ The [Oregon Delphi User Group](https://odug.org/) is always looking for interest
 
 [Velthuis.Console](https://github.com/rvelthuis/Consoles.git)
 - **ConsoleDemo**: Shows several functions that act like the old Borland `crt` unit.
+
+[tinyBigGAMES:Console](https://github.com/interestingitems/tbg_Console)
+- **tbg_Console**: Amazing demo with several examples of colorful, "ASCII Art" in motion.
