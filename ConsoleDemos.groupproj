@@ -15,6 +15,9 @@
         <Projects Include="tbg_testbed\Testbed.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="VSoft\System.Console\VSoftSystemConsoleDemo.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +62,23 @@
     <Target Name="Testbed:Make">
         <MSBuild Projects="tbg_testbed\Testbed.dproj" Targets="Make"/>
     </Target>
+    <Target Name="VSoftSystemConsoleDemo">
+        <MSBuild Projects="VSoft\System.Console\VSoftSystemConsoleDemo.dproj"/>
+    </Target>
+    <Target Name="VSoftSystemConsoleDemo:Clean">
+        <MSBuild Projects="VSoft\System.Console\VSoftSystemConsoleDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VSoftSystemConsoleDemo:Make">
+        <MSBuild Projects="VSoft\System.Console\VSoftSystemConsoleDemo.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ConsoleOut;QuickConsoleMenu;ConsoleDemo;Testbed"/>
+        <CallTarget Targets="ConsoleOut;QuickConsoleMenu;ConsoleDemo;Testbed;VSoftSystemConsoleDemo"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ConsoleOut:Clean;QuickConsoleMenu:Clean;ConsoleDemo:Clean;Testbed:Clean"/>
+        <CallTarget Targets="ConsoleOut:Clean;QuickConsoleMenu:Clean;ConsoleDemo:Clean;Testbed:Clean;VSoftSystemConsoleDemo:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ConsoleOut:Make;QuickConsoleMenu:Make;ConsoleDemo:Make;Testbed:Make"/>
+        <CallTarget Targets="ConsoleOut:Make;QuickConsoleMenu:Make;ConsoleDemo:Make;Testbed:Make;VSoftSystemConsoleDemo:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
